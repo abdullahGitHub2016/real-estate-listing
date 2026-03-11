@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-bd-navy { background-color: #003580; }
+        .text-bd-navy { color: #003580; }
+        .text-bd-green { color: #28a745; }
+        .bg-bd-green { background-color: #28a745; }
+        .border-light { border-color: #e9ecef; }
+    </style>
+</head>
+<body class="bg-white text-gray-700">
+
+    <div class="bg-gray-50 border-b border-light py-2 hidden md:block">
+        <div class="container mx-auto px-4 text-xs flex justify-end space-x-4 text-gray-500">
+            <span><i class="fa-solid fa-phone mr-1"></i> +880 1726-211xxx</span>
+            <a href="#" class="hover:underline">Login</a>
+            <a href="#" class="hover:underline">Register</a>
+        </div>
+    </div>
+
+    <nav class="bg-white border-b border-light sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tight text-bd-navy">
+                DreamHome<span class="text-bd-green">BD</span>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-[14px] font-semibold uppercase">
+                <a href="#" class="hover:text-bd-green">For Sale</a>
+                <a href="#" class="text-bd-green">For Rent</a>
+                <a href="#" class="hover:text-bd-green">Roommates</a>
+                <a href="#" class="hover:text-bd-green">Developers</a>
+            </div>
+            <button class="bg-bd-green text-white px-5 py-2 rounded text-sm font-bold hover:bg-green-600 transition">
+                ADD PROPERTY
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6">
+        <div class="text-[12px] text-gray-400 mb-6">
+            Home  /  Property Details  /  <span class="text-gray-600">700 sqft showroom shop restaurant rent shyamoli</span>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            
+            <div class="lg:w-[68%]">
+                
+                <div class="mb-6">
+                    <div class="flex items-center space-x-3 mb-2">
+                        <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Rent</span>
+                        <span class="text-gray-400 text-xs">Property ID: 243981</span>
+                    </div>
+                    <h1 class="text-2xl font-semibold text-gray-800 mb-2">700 sqft, Showroom/Shop/Restaurant for Rent at Shyamoli</h1>
+                    <p class="text-sm text-gray-500"><i class="fa-solid fa-location-dot text-bd-green mr-1"></i> Shyamoli, Dhaka.</p>
+                </div>
+
+                <div class="bg-gray-100 rounded-sm overflow-hidden mb-8 border border-light">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop" class="w-full h-[450px] object-cover">
+                </div>
+
+                <div class="mb-10">
+                    <h3 class="text-lg font-bold text-bd-navy mb-4 border-b border-light pb-2">Property Summary</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Property Type</span>
+                            <span class="font-medium">Showroom/Shop/Restaurant</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Property For</span>
+                            <span class="font-medium text-bd-green">Rent</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Property Size</span>
+                            <span class="font-medium">700 (Sq.ft)</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Deposit Amount</span>
+                            <span class="font-medium">2.50 Lac</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Furnishing</span>
+                            <span class="font-medium">Semi-Furnished</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-light text-sm">
+                            <span class="text-gray-500">Total Floor</span>
+                            <span class="font-medium">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-10 bg-gray-50 p-6 rounded-sm border border-light">
+                    <h3 class="text-lg font-bold text-bd-navy mb-4">Property Features</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-y-3">
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> Security</div>
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> Lift</div>
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> Fire exit</div>
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> WASA connection</div>
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> Electricity</div>
+                        <div class="flex items-center text-[13px] text-gray-600"><i class="fa-solid fa-check text-bd-green mr-2 text-[10px]"></i> CCTV</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:w-[32%]">
+                <div class="bg-white border border-light p-6 mb-6 shadow-sm">
+                    <div class="text-gray-400 text-xs uppercase mb-1">Rent Amount</div>
+                    <div class="text-3xl font-bold text-bd-navy mb-4">BDT 70,000 <span class="text-xs font-normal text-gray-400">/ monthly</span></div>
+                    
+                    <button class="w-full bg-bd-green text-white font-bold py-3 rounded hover:bg-green-600 transition flex items-center justify-center mb-3">
+                        <i class="fa-solid fa-phone mr-2"></i> +8801726211xxx
+                    </button>
+                    <button class="w-full border border-bd-navy text-bd-navy font-bold py-3 rounded hover:bg-blue-50 transition">
+                        SEND MESSAGE
+                    </button>
+                </div>
+
+                <div class="bg-gray-50 border border-light p-6 text-center">
+                    <div class="w-16 h-16 bg-white border border-light rounded-full mx-auto mb-3 flex items-center justify-center text-gray-300">
+                        <i class="fa-solid fa-user text-3xl"></i>
+                    </div>
+                    <div class="text-sm font-bold text-gray-700">Mohammed Evan</div>
+                    <div class="text-[11px] text-bd-green font-bold uppercase mb-4">Verified Owner</div>
+                    <a href="#" class="text-xs text-bd-navy hover:underline">View all properties of this owner</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 border-t border-light mt-20 py-12 text-sm text-gray-500">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="font-bold text-bd-navy mb-4 uppercase">About DreamHome</div>
+                <p class="leading-relaxed">Providing high-quality real estate solutions across Bangladesh for over 15 years.</p>
+            </div>
+            <div>
+                <div class="font-bold text-bd-navy mb-4 uppercase">Quick Links</div>
+                <ul class="space-y-2">
+                    <li>Add Your Property</li>
+                    <li>Featured Properties</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div>
+                <div class="font-bold text-bd-navy mb-4 uppercase">Contact Info</div>
+                <p>Unit 10A, House 21, Road 17, Block C<br>Banani, Dhaka 1213</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
