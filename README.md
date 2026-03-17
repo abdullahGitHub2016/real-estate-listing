@@ -27,19 +27,15 @@ This project focuses on high-performance industrial layouts and **microservices-
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-The landing page featuring highlighted properties and job categories.
+![Home Page](screenshots/home.png)
 
 ### 🏘️ Property Details
-Detailed view of listings including owner information and verified badges.
+![Property Details](screenshots/property-details.png)
 
 ### 🏢 Developers Portal
-A list of development partners with dynamic membership status indicators.
+![Developers Portal](screenshots/developers.png)
 
-> _(Add screenshots inside a `/screenshots` folder and link like below)_
-
-```markdown
-![Home](screenshots/home.png)
-```
+> Place your images inside a `screenshots` folder in your project root.
 
 ---
 
@@ -48,20 +44,20 @@ A list of development partners with dynamic membership status indicators.
 ### 🎨 Frontend
 - HTML5
 - Thymeleaf Template Engine
-- Tailwind CSS *(Utility-first styling)*
-- FontAwesome *(Iconography)*
+- Tailwind CSS
+- FontAwesome
 
 ### ⚙️ Backend
 - Java 21 / Spring Boot 3
-- Spring Data JPA *(PostgreSQL / MySQL)*
+- Spring Data JPA (PostgreSQL / MySQL)
 - Spring Security
-- FFmpeg *(Video processing & thumbnail generation)*
+- FFmpeg
 
 ### 🧱 Infrastructure
 - Docker & Docker Compose
-- Apache Kafka *(Message Broker)*
+- Apache Kafka
 - RabbitMQ
-- Windows 11 Development Environment
+- Windows 11
 
 ---
 
@@ -73,32 +69,23 @@ git clone https://github.com/your-username/my-jobs.git
 cd my-jobs
 ```
 
-### 2️⃣ Database Configuration
-Update the following file with your database credentials:
-
+### 2️⃣ Configure Database
+Edit:
 ```
 src/main/resources/application.properties
 ```
 
----
-
-### 3️⃣ Build the Project
+### 3️⃣ Build Project
 ```bash
 mvn clean install
 ```
-
----
 
 ### 4️⃣ Run with Docker
 ```bash
 docker-compose up -d
 ```
 
----
-
-### 5️⃣ Access the Application
-Open your browser and navigate to:
-
+### 5️⃣ Open in Browser
 ```
 http://localhost:8080
 ```
@@ -107,11 +94,4 @@ http://localhost:8080
 
 ## 📝 License
 
-Distributed under the **MIT License**.  
-See `LICENSE` for more information.
-
----
-
-## ⭐ Support
-
-If you like this project, give it a ⭐ on GitHub!
+MIT License
