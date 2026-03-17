@@ -36,21 +36,17 @@
             </div>
 
             <div class="flex items-center justify-center gap-1 mb-2">
-                <h3 class="font-bold text-blue-900 text-sm truncate px-2" th:text="${dev.devName}">Developer Name</h3>
+                <h3 class="font-bold text-blue-900 text-sm truncate px-2" th:text="${dev.developerName}">Developer Name</h3>
                 <i th:if="${dev.isVerified}" class="fa-solid fa-circle-check text-blue-500 text-[12px]"></i>
             </div>
 
             <div class="mb-4" th:if="${dev.membershipType != null}">
-                <div th:switch="${dev.membershipType.name()}">
-        <span th:case="'PLATINUM'" class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">
-            <i class="fa-solid fa-crown mr-1"></i> Platinum
-        </span>
-                    <span th:case="'GOLD'" class="bg-yellow-100 text-yellow-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">
-            <i class="fa-solid fa-star mr-1"></i> Gold
-        </span>
-                    <span th:case="*" class="bg-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase">
-            Basic
-        </span>
+                <div th:switch="${dev.membershipType}">
+                    <p th:case="'PLATINUM'" class="text-blue-600 font-bold">Platinum Member</p>
+
+                    <p th:case="'GOLD'" class="text-yellow-500 font-bold">Gold Member</p>
+
+                    <p th:case="*">Standard Member</p>
                 </div>
             </div>
 
