@@ -30,17 +30,23 @@ public class PropertyController {
     }
 
     @GetMapping("/property/{id}")
-    public String showPropertyDetails(@PathVariable("id") Long id, Model model) {
-        Property property = propertyRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public String showDetails(@PathVariable Long id, Model model) {
+        Property property = propertyRepository.findById(id).orElseThrow();
 
-        // Handle "Similar Properties" safely
-        List<Property> similar = propertyRepository.findTop4ByAreaNameAndIdNot(property.getAreaName(), id);
-        if (similar == null) similar = new ArrayList<>();
+        // 1. Try to find by Area
+        List<Property> similar = propertyRepository.findTop3ByAreaNameContainingIgnoreCaseAndIdNot(
+                property.getAreaName(), id
+        );
+
+        // 2. Fallback: If area is empty, find by Property Type (e.g., other Apartments)
+        if (similar.isEmpty()) {
+            similar = propertyRepository.findTop3ByPropertyTypeAndIdNot(
+                    property.getPropertyType(), id
+            );
+        }
 
         model.addAttribute("property", property);
         model.addAttribute("similarProperties", similar);
-
         return "property-details";
     }
 }

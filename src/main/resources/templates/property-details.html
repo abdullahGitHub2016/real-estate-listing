@@ -104,15 +104,12 @@
             <div class="mt-12">
                 <h3 class="text-lg font-bold text-bd-navy mb-6 border-b border-light pb-2">Similar Properties in <span th:text="${property.areaName}">this Area</span></h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div th:each="sim : ${similarProperties}" class="border border-light rounded overflow-hidden shadow-sm hover:shadow-md transition bg-white">
+                    <div th:each="sim : ${similarProperties}" class="border border-light rounded overflow-hidden shadow-sm">
                         <a th:href="@{/property/{id}(id=${sim.id})}">
-                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=400&auto=format&fit=crop" class="w-full h-32 object-cover">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=400" class="w-full h-32 object-cover">
                             <div class="p-3">
                                 <h4 class="text-sm font-bold text-bd-navy truncate" th:text="${sim.title}">Title</h4>
-                                <p class="text-[11px] text-gray-500" th:text="${sim.areaName}">Area Name</p>
-                                <div class="mt-2 text-bd-green font-bold text-sm">
-                                    TK <span th:text="${sim.priceTotal != null ? #numbers.formatDecimal(sim.priceTotal, 0, 'COMMA', 0, 'POINT') : 'N/A'}">0</span>
-                                </div>
+                                <p class="text-[11px] text-gray-500" th:text="${sim.areaName}">Area</p>
                             </div>
                         </a>
                     </div>

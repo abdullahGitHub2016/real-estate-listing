@@ -8,6 +8,9 @@ import java.util.List;
 @Repository
 public interface PropertyRepository extends JpaRepository<Property, Long> {
 
-    // Logic: Find properties in the same area, but exclude the current one
-    List<Property> findTop4ByAreaNameAndIdNot(String areaName, Long id);
+    // A more flexible search that ignores case and extra spaces
+    List<Property> findTop3ByAreaNameContainingIgnoreCaseAndIdNot(String areaName, Long id);
+
+    // Fallback: If no properties in the same area, find by Property Type
+    List<Property> findTop3ByPropertyTypeAndIdNot(String propertyType, Long id);
 }
