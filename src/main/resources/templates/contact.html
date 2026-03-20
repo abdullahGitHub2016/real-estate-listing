@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{fragments/layout :: header-css}"></div>
+    <title>Contact Us | DreamHome BD</title>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a th:href="@{/}" class="text-xl font-black text-blue-900 tracking-tighter uppercase">
+            DREAMHOME<span class="text-green-600">BD</span>
+        </a>
+
+        <div class="hidden md:flex space-x-6 text-[11px] font-bold uppercase tracking-wider items-center">
+            <a th:href="@{/}" class="text-gray-500 hover:text-green-600">Home</a>
+            <a th:href="@{/properties?purpose=rent}" class="text-gray-500 hover:text-green-600">To Rent</a>
+            <a th:href="@{/properties?purpose=sale}" class="text-gray-500 hover:text-green-600">For Sale</a>
+
+            <div class="relative group py-4">
+                <button class="flex items-center text-gray-500 hover:text-green-600 uppercase outline-none">
+                    Properties <i class="fa-solid fa-chevron-down ml-1 text-[8px]"></i>
+                </button>
+                <div class="absolute hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg w-48 mt-0 py-2 z-50">
+                    <a th:href="@{/properties}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600 border-b border-gray-50">All Properties</a>
+                    <a th:href="@{/properties?purpose=rent}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">To Rent</a>
+                    <a th:href="@{/properties?purpose=sale}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">For Sale</a>
+                    <a th:href="@{/properties?type=commercial}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">Commercial</a>
+                    <a th:href="@{/properties?type=land}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">Land</a>
+                </div>
+            </div>
+
+            <a th:href="@{/inquiry}" class="text-gray-500 hover:text-green-600">Inquiry</a>
+            <a th:href="@{/contact}" class="text-green-600 border-b-2 border-green-600 pb-1">Contact</a>
+            <a th:href="@{/blog}" class="text-gray-500 hover:text-green-600">Blog</a>
+        </div>
+
+        <a th:href="@{/inquiry}" class="bg-blue-900 text-white px-4 py-2 rounded text-[10px] font-bold uppercase hover:bg-blue-800 transition">Post Ad</a>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <div class="space-y-8">
+            <div>
+                <h1 class="text-3xl font-black text-blue-900 mb-2 uppercase italic tracking-tighter">Contact Us</h1>
+                <div class="w-12 h-1 bg-green-600 mb-6"></div>
+                <p class="text-gray-500 text-sm leading-relaxed">
+                    Have questions about a property or need help with our portal? Reach out to our dedicated support team.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-blue-50 p-3 rounded-lg text-blue-900">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-900 text-sm uppercase">Office Address</h4>
+                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Unit 10A, House 21, Road 17, Block C<br>Banani, Dhaka 1213, Bangladesh
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="bg-green-50 p-3 rounded-lg text-green-600">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-900 text-sm uppercase">Call Us</h4>
+                        <p class="text-xs text-gray-500 mt-1">+880 1712-345678</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-2">
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+
+                <div th:if="${param.success}" class="mb-6 p-4 bg-green-100 text-green-700 rounded-lg text-sm font-bold border border-green-200">
+                    <i class="fa-solid fa-circle-check mr-2"></i> Message sent! We will contact you shortly.
+                </div>
+
+                <form th:action="@{/contact/send}" th:object="${contactForm}" method="POST" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">First Name *</label>
+                            <input type="text" th:field="*{firstName}" required
+                                   class="w-full bg-gray-50 border border-gray-100 p-4 rounded-lg outline-none focus:border-green-600 transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Last Name</label>
+                            <input type="text" th:field="*{lastName}"
+                                   class="w-full bg-gray-50 border border-gray-100 p-4 rounded-lg outline-none focus:border-green-600 transition-colors text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Email Address *</label>
+                        <input type="email" th:field="*{email}" required
+                               class="w-full bg-gray-50 border border-gray-100 p-4 rounded-lg outline-none focus:border-green-600 transition-colors text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase mb-2 tracking-widest">Message *</label>
+                        <textarea th:field="*{message}" rows="6" required
+                                  placeholder="How can we help you today?"
+                                  class="w-full bg-gray-50 border border-gray-100 p-4 rounded-lg outline-none focus:border-green-600 transition-colors text-sm"></textarea>
+                    </div>
+
+                    <button type="submit"
+                            class="bg-green-600 hover:bg-green-700 text-white font-black py-4 px-10 rounded-lg shadow-lg uppercase tracking-widest text-xs transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

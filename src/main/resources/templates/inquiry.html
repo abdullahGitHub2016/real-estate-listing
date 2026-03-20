@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{fragments/layout :: header-css}"></div>
+    <title>Post Inquiry | DreamHome BD</title>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<main class="max-w-7xl mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
+
+        <div class="md:w-1/3 bg-blue-900 text-white p-8">
+            <h2 class="text-2xl font-bold mb-4 uppercase tracking-tight">Post Your Inquiry</h2>
+            <p class="text-sm opacity-80 leading-relaxed">
+                Can't find your dream property in our listings? Tell us what you need.
+            </p>
+        </div>
+
+        <form th:action="@{/inquiry/save}" th:object="${inquiry}" method="post" class="md:w-2/3 p-8 space-y-4">
+
+            <div th:if="${param.success}" class="p-4 bg-green-100 text-green-700 rounded mb-4 font-bold text-sm">
+                Requirement posted successfully! Developers will contact you soon.
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Full Name *</label>
+                    <input type="text" th:field="*{fullName}" required class="w-full border border-gray-100 p-3 rounded outline-none focus:border-green-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Mobile Number *</label>
+                    <input type="text" th:field="*{mobileNumber}" required class="w-full border border-gray-100 p-3 rounded outline-none focus:border-green-600">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">I want to...</label>
+                <select th:field="*{inquiryType}" class="w-full border border-gray-100 p-3 rounded outline-none bg-white">
+                    <option value="buy">Buy a Property</option>
+                    <option value="looking_to_rent">Rent a Property</option>
+                    <option value="sell">Sell my Property</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">City *</label>
+                    <select th:field="*{city}" class="w-full border border-gray-100 p-3 rounded outline-none bg-white">
+                        <option th:each="c : ${cities}" th:value="${c.id}" th:text="${c.cityName}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Specific Area</label>
+                    <input type="text" th:field="*{areaName}" placeholder="e.g. Bashundhara" class="w-full border border-gray-100 p-3 rounded outline-none">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-400 uppercase mb-1">Detailed Requirements *</label>
+                <textarea th:field="*{message}" rows="4" required placeholder="e.g. 3 Beds, 1500 sqft in North side..." class="w-full border border-gray-100 p-3 rounded outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded shadow-lg transition-colors w-full uppercase tracking-widest text-sm">
+                Submit Requirement
+            </button>
+        </form>
+    </div>
+</main>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+</html>

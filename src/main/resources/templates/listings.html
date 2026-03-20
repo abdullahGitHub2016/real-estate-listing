@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="~{fragments/layout :: header-css}"></div>
+    <title>Properties for Rent | DreamHome BD</title>
+</head>
+<body class="bg-gray-50">
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+
+    <aside class="w-full md:w-1/4">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 sticky top-24">
+            <h3 class="font-bold text-blue-900 mb-4 uppercase text-sm tracking-widest">Filter Search</h3>
+
+            <form th:action="@{/properties/to-rent}" method="get" class="space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Location</label>
+                    <select name="cityId" class="w-full border p-2 rounded text-sm outline-none focus:border-green-600">
+                        <option value="">All Cities</option>
+                        <option th:each="c : ${cities}" th:value="${c.id}" th:text="${c.cityName}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Max Price (BDT)</label>
+                    <input type="number" name="maxPrice" placeholder="e.g. 50000" class="w-full border p-2 rounded text-sm outline-none focus:border-green-600">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Minimum Beds</label>
+                    <div class="flex gap-2">
+                        <label th:each="i : ${#numbers.sequence(1, 4)}" class="flex-grow">
+                            <input type="radio" name="beds" th:value="${i}" class="hidden peer">
+                            <span class="block text-center border p-2 rounded cursor-pointer peer-checked:bg-green-600 peer-checked:text-white text-xs">
+                                    [[${i}]]+
+                                </span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-900 text-white font-bold py-3 rounded uppercase text-[10px] tracking-widest hover:bg-blue-800 transition">
+                    Update Results
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <main class="w-full md:w-3/4">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-blue-900 italic">Properties for Rent</h2>
+            <span class="text-xs text-gray-500 font-bold" th:text="${properties.size() + ' Results Found'}">0 Results</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div th:each="p : ${properties}" class="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="relative h-48">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=500" class="w-full h-full object-cover">
+                    <div class="absolute top-3 left-3 bg-green-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+                        FOR RENT
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h4 class="text-green-600 font-bold text-[10px] uppercase mb-1" th:text="${p.propertyType}">Apartment</h4>
+                    <h3 class="font-bold text-blue-900 truncate" th:text="${p.title}">Luxury Villa</h3>
+                    <p class="text-gray-400 text-xs mt-1">
+                        <i class="fa-solid fa-location-dot mr-1"></i> <span th:text="${p.areaName + ', ' + p.city.cityName}">Dhaka</span>
+                    </p>
+
+                    <div class="flex justify-between mt-4 pt-4 border-t border-gray-50 text-[10px] font-bold text-gray-400 uppercase">
+                        <span><i class="fa-solid fa-bed mr-1 text-blue-900"></i> [[${p.beds}]] Beds</span>
+                        <span><i class="fa-solid fa-bath mr-1 text-blue-900"></i> [[${p.baths}]] Baths</span>
+                        <span><i class="fa-solid fa-maximize mr-1 text-blue-900"></i> [[${p.sizeSqft}]] Sqft</span>
+                    </div>
+
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-blue-900 font-black">BDT [[${#numbers.formatDecimal(p.priceTotal, 0, 'COMMA', 0, 'POINT')}]]</span>
+                        <a th:href="@{/property/{id}(id=${p.id})}" class="text-green-600 text-[10px] font-black uppercase hover:underline">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div th:replace="~{fragments/layout :: footer}"></div>
+</body>
+</html>

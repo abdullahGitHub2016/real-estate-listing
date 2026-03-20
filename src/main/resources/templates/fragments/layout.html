@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header-css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .text-bd-navy { color: #1e3a8a; } /* Matches your blue-900 */
+        .bg-bd-navy { background-color: #1e3a8a; }
+    </style>
+</head>
+<body>
+
+<nav th:fragment="navbar" class="bg-white shadow-sm sticky top-0 z-50 font-sans">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a th:href="@{/}" class="text-xl font-black text-blue-900 tracking-tighter uppercase">
+            DREAMHOME<span class="text-green-600">BD</span>
+        </a>
+
+        <div class="hidden md:flex space-x-6 text-[11px] font-bold uppercase tracking-wider items-center">
+            <a th:href="@{/}" class="text-gray-500 hover:text-green-600">Home</a>
+
+            <a th:href="@{/properties/to-rent}" class="text-gray-500 hover:text-green-600">To Rent</a>
+            <a th:href="@{/properties/for-sale}" class="text-gray-500 hover:text-green-600">For Sale</a>
+
+            <div class="relative group py-4">
+                <button class="flex items-center text-gray-500 hover:text-green-600 uppercase">
+                    More <i class="fa-solid fa-chevron-down ml-1 text-[8px]"></i>
+                </button>
+                <div class="absolute hidden group-hover:block bg-white shadow-xl border border-gray-100 rounded-lg w-48 mt-0 py-2 z-50">
+                    <a th:href="@{/properties/commercial}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">Commercial</a>
+                    <a th:href="@{/properties/land}" class="block px-4 py-2 hover:bg-gray-50 hover:text-green-600">Land & Plots</a>
+                </div>
+            </div>
+
+            <a th:href="@{/inquiry}" class="text-gray-500 hover:text-green-600">Inquiry</a>
+            <a th:href="@{/contact}" class="text-gray-500 hover:text-green-600">Contact</a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            <a th:href="@{/inquiry}" class="bg-blue-900 text-white px-4 py-2 rounded text-[10px] font-bold uppercase hover:bg-blue-800 transition">
+                Post Ad
+            </a>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="bg-gray-100 border-t border-light mt-20 py-12 text-sm text-gray-500">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <div class="font-bold text-blue-900 mb-4 uppercase">About DreamHome</div>
+            <p class="leading-relaxed">Providing high-quality real estate solutions across Bangladesh for over 15 years.</p>
+        </div>
+        <div>
+            <div class="font-bold text-blue-900 mb-4 uppercase">Quick Links</div>
+            <ul class="space-y-2">
+                <li><a th:href="@{/inquiry}" class="hover:text-green-600">Add Your Property</a></li>
+                <li>Featured Properties</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+        <div>
+            <div class="font-bold text-blue-900 mb-4 uppercase">Contact Info</div>
+            <p>Unit 10A, House 21, Road 17, Block C<br>Banani, Dhaka 1213</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
